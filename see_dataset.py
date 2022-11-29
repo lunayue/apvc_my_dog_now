@@ -6,7 +6,7 @@ import fiftyone as fo
 name = "my-dataset"
 
 # The directory containing the dataset to import
-dataset_dir = "C:/Users/susan/fiftyone/coco-2017/validation"
+dataset_dir = "C:/Users/susan/fiftyone/coco-2017/train"
 
 # The type of the dataset being imported
 dataset_type = fo.types.COCODetectionDataset  # for example

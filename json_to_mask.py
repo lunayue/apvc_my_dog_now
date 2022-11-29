@@ -11,15 +11,9 @@ from PIL import Image, ImageDraw
 
 TRAIN_JSON = "C:/Users/susan/fiftyone/coco-2017/train/labels.json"
 VAL_JSON = "C:/Users/susan/fiftyone/coco-2017/validation/labels.json"
-TEST_JASON = "C:/Users/susan/fiftyone/coco-2017/test/labels.json"
 
+STORE_TRAIN_MASKS = "C:/Users/susan/fiftyone/coco-2017/masks/train"
 STORE_VAL_MASKS = "C:/Users/susan/fiftyone/coco-2017/masks/validation"
-
-val_dic = json.load(open(VAL_JSON))
-#for aux in val_dic["annotations"]:
-#    print("segmentation: " + str(aux["segmentation"]))
-#    print("image id: " + str(aux["image_id"]))
-#    print("category id: " + str(aux["category_id"]))
 
 
 def create_mask_files(labels_location, masks_location):
@@ -71,8 +65,11 @@ def make_masks(labels_location, masks_location, category_id):
                 cv2.imwrite(mask_file_name, full_mask)
 
 
-
 create_mask_files(VAL_JSON, STORE_VAL_MASKS)
-print("empty masks done")
+print("validation empty masks done")
 make_masks(VAL_JSON, STORE_VAL_MASKS, 18)
-print("masks with pups done")
+print("validation masks with pups done")
+create_mask_files(TRAIN_JSON, STORE_TRAIN_MASKS)
+print("train empty masks done")
+make_masks(TRAIN_JSON, STORE_TRAIN_MASKS, 18)
+print("train masks with pups done")
